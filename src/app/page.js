@@ -68,7 +68,7 @@ export default function LandscapingHomePage() {
           <a href="#services" className="hover:underline">Our Services</a>
           <a href="#about" className="hover:underline">About</a>
           <a href="#testimonials" className="hover:underline">Testimonials</a>
-          <a href="tel:8603728467" className="hover:underline">Book Now</a>
+          <a href="#contact" className="hover:underline">Book Now</a>
         </nav>
 
         {/* Hero Slider */}
@@ -90,23 +90,20 @@ export default function LandscapingHomePage() {
         <section id="services" className="mb-20 max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-green-800 mb-6 text-center">Our Services</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {["Spring", "Summer", "Fall", "Winter"].map((season) => {
-              const serviceData = {
-                Spring: ["Yard cleanups", "Mulch installation", "Garden bed prep", "Hedge Trimming"],
-                Summer: ["Mowing & edging", "Weeding", "General landscaping"],
-                Fall: ["Leaf cleanups", "Brush Removal", "Lawn Aeration"],
-                Winter: ["Snow plowing", "Salting & de-icing", "Junk Removal"]
-              };
-              return (
-                <div key={season} className="p-6 bg-white rounded shadow hover:scale-105 transition-transform duration-300 h-full">
-                  <img src={`/${season.toLowerCase()}.jpeg`} alt={season} className="w-full h-64 object-cover rounded mb-4" />
-                  <h3 className="text-xl font-semibold text-green-700">{season}</h3>
-                  <ul className="list-disc list-inside text-gray-700">
-                    {serviceData[season].map((item, i) => <li key={i}>{item}</li>)}
-                  </ul>
-                </div>
-              );
-            })}
+            {[
+              { season: "Spring", tasks: ["Yard cleanups", "Mulch installation", "Garden bed prep", "Hedge Trimming"] },
+              { season: "Summer", tasks: ["Mowing & edging", "Weeding", "General landscaping"] },
+              { season: "Fall", tasks: ["Leaf cleanups", "Brush Removal", "Lawn Aeration"] },
+              { season: "Winter", tasks: ["Snow plowing", "Salting & de-icing", "Junk Removal"] },
+            ].map(({ season, tasks }) => (
+              <div key={season} className="p-6 bg-white rounded shadow hover:scale-105 transition-transform duration-300 h-full">
+                <img src={`/${season.toLowerCase()}.jpeg`} alt={season} className="w-full h-64 object-cover rounded mb-4" />
+                <h3 className="text-xl font-semibold text-green-700">{season}</h3>
+                <ul className="list-disc list-inside text-gray-700">
+                  {tasks.map((item, i) => <li key={i}>{item}</li>)}
+                </ul>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -122,19 +119,38 @@ export default function LandscapingHomePage() {
         <section id="testimonials" className="mb-20 max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-green-800 mb-6 text-center">Testimonials</h2>
           <div className="space-y-6">
-            <blockquote className="bg-white p-4 rounded shadow text-gray-800">
-              <p className="mb-2 italic">&quot;All that is said in the reviews are true! Evan and the PMB team are a breath of fresh air — on time, communicative, and enthusiastic about what they do. My house has never looked better.&quot;</p>
-              <cite className="text-sm text-gray-600">— Tim Sanford, Facebook</cite>
-            </blockquote>
-            <blockquote className="bg-white p-4 rounded shadow text-gray-800">
-              <p className="mb-2 italic">&quot;They did an amazing job weeding around our house. Very meticulous and professional. Reasonable pricing.&quot;</p>
-              <cite className="text-sm text-gray-600">— Genna Giammatteo, Facebook</cite>
-            </blockquote>
-            <blockquote className="bg-white p-4 rounded shadow text-gray-800">
-              <p className="mb-2 italic">&quot;Evan at PMB Landscaping is professional, meticulous and a hard worker. He’s done weeding, planting and spread mulch for us — always leaving the areas very tidy.&quot;</p>
-              <cite className="text-sm text-gray-600">— Ellen Seageart, Facebook</cite>
-            </blockquote>
+            {[
+              {
+                quote: "All that is said in the reviews are true! Evan and the PMB team are a breath of fresh air — on time, communicative, and enthusiastic about what they do. My house has never looked better.",
+                author: "Tim Sanford, Facebook"
+              },
+              {
+                quote: "They did an amazing job weeding around our house. Very meticulous and professional. Reasonable pricing.",
+                author: "Genna Giammatteo, Facebook"
+              },
+              {
+                quote: "Evan at PMB Landscaping is professional, meticulous and a hard worker. He’s done weeding, planting and spread mulch for us — always leaving the areas very tidy.",
+                author: "Ellen Seageart, Facebook"
+              }
+            ].map((t, i) => (
+              <blockquote key={i} className="bg-white p-4 rounded shadow text-gray-800">
+                <p className="mb-2 italic">&quot;{t.quote}&quot;</p>
+                <cite className="text-sm text-gray-600">— {t.author}</cite>
+              </blockquote>
+            ))}
           </div>
+        </section>
+
+        {/* Contact Form */}
+        <section id="contact" className="mb-20 max-w-2xl mx-auto text-center">
+          <h2 className="text-3xl font-bold text-green-800 mb-4">Request a Quote</h2>
+          <p className="text-gray-700 mb-6">Let us know what you&apos;re looking for and we&apos;ll get back to you quickly!</p>
+          <form action="https://formspree.io/f/your-form-id" method="POST" className="space-y-4 bg-white p-6 rounded shadow">
+            <input type="text" name="name" placeholder="Your Name" required className="w-full p-2 border border-gray-300 rounded" />
+            <input type="email" name="email" placeholder="Email Address" required className="w-full p-2 border border-gray-300 rounded" />
+            <textarea name="message" placeholder="Tell us what services you&apos;re interested in..." rows="5" required className="w-full p-2 border border-gray-300 rounded"></textarea>
+            <button type="submit" className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-full">Send Request</button>
+          </form>
         </section>
 
         {/* Footer */}
