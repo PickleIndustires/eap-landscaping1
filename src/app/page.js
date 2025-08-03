@@ -9,7 +9,7 @@ export default function LandscapingHomePage() {
     "/fall.jpeg",
     "/winter.jpeg",
     "/smainfall.jpeg",
-    "/zoller.jpeg",
+    "/Zoller.jpeg",
     "/shepardstripes.jpeg"
   ];
 
@@ -34,9 +34,9 @@ export default function LandscapingHomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-100 to-white p-6 relative font-sans">
       {/* Top Banner */}
-      <div className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-green-800/80' : 'bg-green-800'} text-white py-2 px-4 flex justify-between items-center text-sm`}>
+      <div className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-green-800/80' : 'bg-green-800'} text-white py-2 px-4 flex flex-col sm:flex-row justify-between sm:items-center text-sm space-y-1 sm:space-y-0`}>
         <span className="font-semibold">EAP Landscaping LLC</span>
-        <div className="flex space-x-6 items-center">
+        <div className="flex flex-col sm:flex-row sm:space-x-6 items-start sm:items-center space-y-1 sm:space-y-0">
           <a href="mailto:EAPLandscapingLLC@gmail.com" className="flex items-center hover:underline">
             <FaEnvelope className="mr-1" /> EAPLandscapingLLC@gmail.com
           </a>
@@ -53,7 +53,7 @@ export default function LandscapingHomePage() {
         className="absolute inset-0 w-full h-full object-contain opacity-10 pointer-events-none z-0" 
       />
 
-      <div className="relative z-10 pt-14">
+      <div className="relative z-10 pt-14 px-4 sm:px-0">
         {/* Header */}
         <header className="text-center mb-10">
           <h1 className="text-5xl font-extrabold text-green-800 drop-shadow-md">EAP Landscaping LLC</h1>
@@ -63,7 +63,7 @@ export default function LandscapingHomePage() {
         </header>
 
         {/* Navigation */}
-        <nav className="flex justify-center space-x-8 text-green-800 font-medium text-lg mb-12">
+        <nav className="flex overflow-x-auto justify-start sm:justify-center space-x-6 px-2 sm:px-0 text-green-800 font-medium text-lg mb-12 whitespace-nowrap">
           <a href="#home" className="hover:underline">Home</a>
           <a href="#services" className="hover:underline">Our Services</a>
           <a href="#about" className="hover:underline">About</a>
@@ -145,7 +145,8 @@ export default function LandscapingHomePage() {
         <section id="contact" className="mb-20 max-w-2xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-green-800 mb-4">Request a Quote</h2>
           <p className="text-gray-700 mb-6">Let us know what you&apos;re looking for and we&apos;ll get back to you quickly!</p>
-          <form action="https://formspree.io/f/your-form-id" method="POST" className="space-y-4 bg-white p-6 rounded shadow">
+          <form action="https://formsubmit.co/EAPLandscapingLLC@gmail.com" method="POST" className="space-y-4 bg-white p-6 rounded shadow">
+            <input type="hidden" name="_subject" value="New quote request from EAP website" />
             <input type="text" name="name" placeholder="Your Name" required className="w-full p-2 border border-gray-300 rounded" />
             <input type="email" name="email" placeholder="Email Address" required className="w-full p-2 border border-gray-300 rounded" />
             <textarea name="message" placeholder="Tell us what services you&apos;re interested in..." rows="5" required className="w-full p-2 border border-gray-300 rounded"></textarea>
